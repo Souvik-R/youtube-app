@@ -1,16 +1,17 @@
-import Body from "./components/Body"
-import Head from "./components/Head"
+import { Provider } from "react-redux";
+import Body from "./components/Body";
+import Head from "./components/Head";
+import store from "./utils/store"
 
 function App() {
 
   return (
-    <div>
-      {/* <h1 className="text-5xl">
-        Namaste Youtube 🙏
-      </h1> */}
+    <Provider store={store}>
+      <div>
         <Head />
         <Body />
-    </div>
+      </div>
+    </Provider>
   )
 }
 
