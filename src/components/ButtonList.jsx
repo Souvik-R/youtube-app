@@ -1,8 +1,15 @@
 import React from 'react';
+import Button from './Button';
 
 const ButtonList = () => {
     return (
-        <div>Button List</div>
+        <div className='flex'>
+            <Button />
+            <Button />
+            <Button />
+            <Button />
+            <Button />
+        </div>
     )
 }
 
