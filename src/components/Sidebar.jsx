@@ -10,12 +10,13 @@ import {
 } from 'react-icons/md';
 import { SiYoutubeshorts } from 'react-icons/si';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   const mainItems = [
-    { icon: <MdHome size={22} />, label: "Home" },
+    { icon: <MdHome size={22} />, label: "Home", path: "/" },
     { icon: <SiYoutubeshorts size={22} />, label: "Shorts" },
     { icon: <MdSubscriptions size={22} />, label: "Subscriptions" },
   ];
@@ -42,7 +43,7 @@ const Sidebar = () => {
   return (
     <div
       className={`bg-white h-screen overflow-y-auto transition-all duration-300 
-      ${isMenuOpen ? "w-130 px-3" : "w-27 px-3"} py-4`}
+      ${isMenuOpen ? "w-130 px-3" : "w-35 px-3"} py-4`}
     >
       <ul className="space-y-1 pb-3 border-b border-gray-200">
         {mainItems.map((item, idx) => (
@@ -51,8 +52,17 @@ const Sidebar = () => {
             className={`flex items-center gap-4 hover:bg-gray-100 p-3 rounded-xl cursor-pointer
               ${idx === 0 ? "bg-gray-100 font-medium" : ""}`}
           >
-            <span className={`${idx === 0 ? "text-black" : "text-gray-700"}`}>{item.icon}</span>
-            {isMenuOpen && <span className="text-sm">{item.label}</span>}
+            {item.path ? (
+              <Link to={item.path} className="flex items-center gap-4 w-full">
+                <span className={`${idx === 0 ? "text-black" : "text-gray-700"}`}>{item.icon}</span>
+                {isMenuOpen && <span className="text-sm">{item.label}</span>}
+              </Link>
+            ) : (
+              <>
+                <span className="text-gray-700">{item.icon}</span>
+                {isMenuOpen && <span className="text-sm">{item.label}</span>}
+              </>
+            )}
           </li>
         ))}
       </ul>
