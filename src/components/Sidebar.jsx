@@ -43,7 +43,7 @@ const Sidebar = () => {
   return (
     <div
       className={`bg-white h-screen overflow-y-auto transition-all duration-300 
-      ${isMenuOpen ? "w-130 px-3" : "w-35 px-3"} py-4`}
+      ${isMenuOpen ? "w-130 px-3" : "w-35 px-3"} py-4`} 
     >
       <ul className="space-y-1 pb-3 border-b border-gray-200">
         {mainItems.map((item, idx) => (
